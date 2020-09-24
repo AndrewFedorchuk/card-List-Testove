@@ -1,0 +1,28 @@
+<div class="container">
+    <div *ngIf="cards; else loader">
+        <div class="add-icon-wrapper">
+            <mat-icon
+                    aria-hidden="false"
+                    aria-label="Circle icon"
+                    class="add-icon"
+                    (click)="openCreateDialog()"
+            >
+                add_circle_outline
+            </mat-icon>
+        </div>
+        <div class="card-wrapper">
+            <app-card
+                    *ngFor="let card of cards"
+                    [card]="card"
+                    (editCard)="openEditDialog($event)"
+                    (deleteCard)="deleteCard($event)"
+            >
+            </app-card>
+        </div>
+    </div>
+    <ng-template #loader>
+        <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
+</div>
+
+
